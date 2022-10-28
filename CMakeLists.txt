@@ -106,11 +106,14 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     if(J2V8_BUILD_X64)
         set(CMAKE_OSX_ARCHITECTURES "x86_64")
     else()
-        set(CMAKE_OSX_ARCHITECTURES "i386")
+        set(CMAKE_OSX_ARCHITECTURES "arm64")
+
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DV8_COMPRESS_POINTERS")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DV8_COMPRESS_POINTERS")
 
         # fix for 32-bit linking error "ld: illegal text reloc"
         # see: https://stackoverflow.com/a/9322458/425532
-        set(CMAKE_SHARED_LINKER_FLAGS "-read_only_relocs suppress")
+        # set(CMAKE_SHARED_LINKER_FLAGS "-read_only_relocs suppress")
     endif()
 #}
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")

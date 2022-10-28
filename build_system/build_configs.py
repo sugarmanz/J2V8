@@ -89,6 +89,14 @@ configs = [
             },
       },
       {
+            "name": "macosx-aarch_64",
+            "params": {
+                  "target": c.target_macos,
+                  "arch": c.arch_arm64,
+                  "node_enabled": True,
+            },
+      },
+      {
             "name": "macosx-x64 @ Vagrant",
             "params": {
                   "target": c.target_macos,
